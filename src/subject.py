@@ -23,3 +23,6 @@ def readSubj(subjects):
         except ValueError:
             print('Invalid value!')
     return subj
+
+def readFromBase(subj):
+    with open (
