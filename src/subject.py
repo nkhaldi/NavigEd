@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
 
+from main import subjDict
 from os import system as sys
+from csv import reader as csvReader
 
 
-def printMenu(subjects):
+def printMenu(subjDict):
     sys('clear')
     print('~~ Menu ~~')
-    for subj in subjects:
-        print(subj + '. ' + subjects[subj])
+    for subj in subjDict:
+        print(subj + '. ' + subjDict[subj])
     print()
 
 
-def readSubj(subjects):
+def readSubj(subjDict):
     while True:
         print('Choose subject number >>', end=' ')
         subj = input()
         try:
             num = int(subj)
-            if num < 1 or num > len(subjects):
+            if num < 1 or num > len(subjDict):
                 raise ValueError
             break
         except ValueError:
@@ -25,4 +27,10 @@ def readSubj(subjects):
     return subj
 
 def readFromBase(subj):
-    with open (
+    fName = '../database/' + (subjDict[subj].lower()).replace(' ', '') + '.csv'
+    with open(fName, 'r') as fd:
+        reader = csvReader(fd)
+        for row in reader:
+            for col in row:
+                print(col, end='\t')
+            print()
