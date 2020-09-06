@@ -13,7 +13,6 @@ subjDict = {
 
 
 if __name__ == '__main__':
-
     printMenu(subjDict)
     subj = readSubj(subjDict)
     print(subj, '-', subjDict[subj])
