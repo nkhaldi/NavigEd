@@ -35,9 +35,5 @@ def mess(message):
     fin_msg += "- Видео\n"
     bot.send_message(message.chat.id, fin_msg, parse_mode='html')
 
-    method = get_message = message.text.strip().lower()
-    fin_msg = f"Ты выбрал <b>{method}</b>."
-    bot.send_message(message.chat.id, fin_msg, parse_mode='html')
-
 
 bot.polling(none_stop=True)
