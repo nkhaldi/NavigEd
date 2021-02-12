@@ -12,16 +12,30 @@ def navigate(subject, method):
             key = printSource(row, key)
 
 
+name_dict = {
+    # ai
+    'AI': 'ai',
+    'Искуственный интеллект': 'ai',
+    'ИИ': 'ai',
+
+    # ds
+    'Data Science': 'ds',
+    'ds' : 'ds',
+
+    # english
+    'Английский': 'english',
+    'English': 'english',
+
+    # math
+    'Математика': 'math',
+
+    # prog
+    'Программирование': 'prog'
+}
+
+
 def get_subject(msg):
-    if msg == "искусственный интеллект"
-        return "ai"
-    elif msg == "Data Sciense"
-        return "ds"
-    elif msg == "Английский"
-        return "english"
-    elif msg == "Математика":
-        return "math"
-    elif msg == "Программирование"
-        return "prog"
+    if msg in name_dict:
+        return name_dict[msg]
     else:
-        return get_msg
+        return 0

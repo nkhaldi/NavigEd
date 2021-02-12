@@ -7,7 +7,7 @@
 
 import telebot
 
-from subjects import *
+from navigator import *
 
 token_file = open('/home/narek/.pass/.naviged.token')
 token = token_file.read().rstrip('\n')
@@ -24,9 +24,20 @@ def start(message):
 @bot.message_handler(content_types=['text'])
 def mess(message):
     get_message = message.text.strip().lower()
+    if get_message == 'Привет' or get_message == 'hi':
+        start(message)
+        return
+
     subject = get_subject(get_message)
-    fin_msg = f"Ты выбрал <b>{subject}</b>."
+    if subject:
+        fin_msg = f"Ты выбрал <b>{subject}</b>."
+    else:
+        fin_msg = "Я не знаю такого."
+
     bot.send_message(message.chat.id, fin_msg, parse_mode='html')
+
+    if not subject:
+        return
 
     fin_msg = "<b>Как ты предпочитаешь учиться?</b>\n"
     fin_msg += "- Статьи\n"
