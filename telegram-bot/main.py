@@ -16,7 +16,8 @@ bot = telebot.TeleBot(token)
 
 @bot.message_handler(commands=['start'])
 def start(message):
-    final_message = f"<b>Привет {message.from_user.first_name}!</b>\nХочешь учиться?"
+    greeting = f"<b>Привет {message.from_user.first_name}!</b>\n"
+    final_message = greeting + "Что хочешь изучить?"
     send_mess = final_message
     bot.send_message(message.chat.id, send_mess, parse_mode='html')
 
