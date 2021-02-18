@@ -8,43 +8,46 @@
 import telebot
 
 from navigator import *
+from message_handler import *
+
 
 token_file = open('/home/narek/.pass/.naviged.token')
 token = token_file.read().rstrip('\n')
 bot = telebot.TeleBot(token)
 
 
-@bot.message_handler(commands=['start'])
+@bot.message_handler(commands=['start'], content_types=['text'])
 def start(message):
     greeting = f"<b>Привет {message.from_user.first_name}!</b>\n"
-    fin_msg = greeting + "Что хочешь изучить?"
-    bot.send_message(message.chat.id, fin_msg, parse_mode='html')
+    msg_out = greeting + "Что хочешь изучить?"
+    bot.send_message(message.chat.id, msg_out, parse_mode='html')
 
 
 @bot.message_handler(content_types=['text'])
 def mess(message):
-    get_message = message.text.strip().lower()
-    if get_message == 'Привет' or get_message == 'hi':
+    msg_in = message.text.strip().lower()
+
+    if is_greeting(msg_in):
         start(message)
         return
 
-    subject = get_subject(get_message)
+    subject = get_subject(msg_in)
     if subject:
-        fin_msg = f"Ты выбрал <b>{subject}</b>."
+        msg_out = f"Ты выбрал <b>{msg_in}</b>."
     else:
-        fin_msg = "Я не знаю такого."
+        msg_out = "Я пока этого не знаю."
 
-    bot.send_message(message.chat.id, fin_msg, parse_mode='html')
+    bot.send_message(message.chat.id, msg_out, parse_mode='html')
 
     if not subject:
         return
 
-    fin_msg = "<b>Как ты предпочитаешь учиться?</b>\n"
-    fin_msg += "- Статьи\n"
-    fin_msg += "- Книги\n"
-    fin_msg += "- Интерактивные курсы\n"
-    fin_msg += "- Видео\n"
-    bot.send_message(message.chat.id, fin_msg, parse_mode='html')
+    msg_out = "<b>Как ты предпочитаешь учиться?</b>\n"
+    msg_out += "- Статьи\n"
+    msg_out += "- Книги\n"
+    msg_out += "- Интерактивные курсы\n"
+    msg_out += "- Видео\n"
+    bot.send_message(message.chat.id, msg_out, parse_mode='html')
 
 
 bot.polling(none_stop=True)
