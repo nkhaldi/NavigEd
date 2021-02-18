@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+
 from csv import reader as csvReader
 
 
@@ -7,30 +8,36 @@ def navigate(subject, method):
     fName = '../db/' + subject + '/' + method + '.csv'
     with open(fName, 'r') as fd:
         reader = csvReader(fd)
-        key = 0
+        result = ""
         for row in reader:
-            key = printSource(row, key)
+            result += f"{row}"
 
 
 name_dict = {
     # ai
-    'AI': 'ai',
-    'Искуственный интеллект': 'ai',
-    'ИИ': 'ai',
+    'ai': 'ai',
+    'ии': 'ai',
+    'искуственный интеллект': 'ai',
 
     # ds
-    'Data Science': 'ds',
-    'ds' : 'ds',
+    'ds': 'ds',
+    'data science': 'ds',
 
-    # english
-    'Английский': 'english',
-    'English': 'english',
+    # eng
+    'eng': 'eng',
+    'english': 'eng',
+    'английский': 'eng',
 
     # math
-    'Математика': 'math',
+    'math': 'math',
+    'матан': 'math',
+    'математика': 'math',
 
     # prog
-    'Программирование': 'prog'
+    'prog': 'prog',
+    'coding': 'prog',
+    'programming': 'prog',
+    'программирование': 'prog'
 }
 
 
@@ -38,4 +45,4 @@ def get_subject(msg):
     if msg in name_dict:
         return name_dict[msg]
     else:
-        return 0
+        return False
