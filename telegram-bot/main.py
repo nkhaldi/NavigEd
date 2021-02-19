@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-# Head or Tail Telegram bot
-# @Head_or_Tail_Bot
-# http://t.me/Head_or_Tail_Bot
+# NavigEd telegram-bot
+# @NavigEdBot
+# http://t.me/NavigEdBot
 
 
 import telebot
@@ -28,21 +28,15 @@ def mess(message):
     msg_in = message.text.strip().lower()
 
     if is_greeting(msg_in):
-        start(message)
-        return
+        return start(message)
 
     subject = get_subject(msg_in)
-    if subject:
-        msg_out = f"Ты выбрал <b>{msg_in}</b>."
-    else:
-        msg_out = "Я пока этого не знаю."
-
-    bot.send_message(message.chat.id, msg_out, parse_mode='html')
-
     if not subject:
+        msg_out = "Я пока этого не знаю."
+        bot.send_message(message.chat.id, msg_out, parse_mode='html')
         return
 
-    msg_out = "<b>Как ты предпочитаешь учиться?</b>\n"
+    msg_out = f"<b>Как ты хочешь изучить {msg_in}?</b>\n"
     msg_out += "- Статьи\n"
     msg_out += "- Книги\n"
     msg_out += "- Интерактивные курсы\n"

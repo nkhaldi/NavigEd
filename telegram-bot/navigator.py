@@ -8,12 +8,13 @@ def navigate(subject, method):
     fName = '../db/' + subject + '/' + method + '.csv'
     with open(fName, 'r') as fd:
         reader = csvReader(fd)
-        result = ""
+        res = ""
         for row in reader:
-            result += f"{row}"
+            res += f"{row}"
+    return res
 
 
-name_dict = {
+subj_codes = {
     # ai
     'ai': 'ai',
     'ии': 'ai',
@@ -42,7 +43,7 @@ name_dict = {
 
 
 def get_subject(msg):
-    if msg in name_dict:
-        return name_dict[msg]
+    if msg in subj_codes:
+        return subj_codes[msg]
     else:
         return False
