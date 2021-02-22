@@ -37,12 +37,10 @@ def mess(message):
 
     subject = get_subject(msg_in)
     method = get_method(msg_in)
-    method = 'a'
 
-    if not subject and not method:
-        msg_out = "Я пока этого не знаю."
-        bot.send_message(message.chat.id, msg_out, parse_mode='html')
-        return
+    if subject and method:
+        ms['m'] = method
+        msg_out = navigate(ms['s'], ms['m'])
     elif subject:
         ms['s'] = subject
         msg_out = f"<b>Как ты хочешь изучать {msg_in}?</b>\n"
@@ -51,8 +49,9 @@ def mess(message):
         msg_out += "- Интерактивные курсы\n"
         msg_out += "- Видео\n"
     else:
-        ms['m'] = method
-        msg_out = navigate(ms['s'], ms['m'])
+        msg_out = f"Я пока этого не знаю.\n{subject}"
+        bot.send_message(message.chat.id, msg_out, parse_mode='html')
+        return
 
     bot.send_message(message.chat.id, msg_out, parse_mode='html')
 
