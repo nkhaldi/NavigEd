@@ -77,7 +77,7 @@ def mess(message):
         )
         return
     else:
-        msg_out = f"Я пока этого не знаю. {ms}"
+        msg_out = f"Я пока этого не знаю."
         bot.send_message(
             message.chat.id,
             msg_out,
