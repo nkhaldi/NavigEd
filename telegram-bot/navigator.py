@@ -40,7 +40,7 @@ def parse_file(reader, method):
         elif method == 'v':
             res += parse_video(row)
     return res
- 
+
 
 def navigate(subject, method):
     fname = '../db/' + str(subject) + '/' + str(method) + '.csv'
