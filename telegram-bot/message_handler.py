@@ -25,11 +25,18 @@ def get_method(msg):
 
 
 subjects = {
-        'ai':   ['ai', 'ии', 'искуственный интеллект'],
-        'ds':   ['ds', 'data science'],
-        'eng':  ['eng', 'english', 'английский'],
-        'math': ['math', 'матан', 'математика'],
-        'prog': ['prog', 'coding', 'programming', 'программирование']
+        'ai':
+        ['ai', 'ии', 'искуственный интеллект'],
+        'ds':
+        ['ds', 'data science'],
+        'eng':
+        ['eng', 'english', 'английский'],
+        'math':
+        ['math', 'матан', 'математика'],
+        'prog':
+        ['prog', 'coding', 'programming', 'программирование'],
+        'philosofy':
+        ['philosofy', 'философия']
 }
 
 methods = {
