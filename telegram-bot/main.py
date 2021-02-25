@@ -45,21 +45,25 @@ def mess(message):
     if is_greeting(msg_in):
         return start(message)
 
-    subject = get_subject(msg_in)
-    method = get_method(msg_in)
+    temp = get_subject(msg_in)
+    if temp:
+        ms['s'] = temp
+        ms['m'] = ''
+    else:
+        ms['m'] = get_method(msg_in)
+#        get_subject(msg_in)
+    print(ms['s'], ms['m'])
 
-    if subject and method:
-        ms['m'] = method
+    if ms['s'] and ms['m']:
         msg_out = navigate(ms['s'], ms['m'])
-    elif subject:
-        ms['s'] = subject
+    elif ms['s']:
         msg_out = f"<b>Как ты хочешь изучать {msg_in}?</b>\n"
         msg_out += "- Статьи\n"
         msg_out += "- Книги\n"
         msg_out += "- Интерактивные курсы\n"
         msg_out += "- Видео\n"
     else:
-        msg_out = f"Я пока этого не знаю."
+        msg_out = f"Я пока этого не знаю. {ms}"
         bot.send_message(
             message.chat.id,
             msg_out,
