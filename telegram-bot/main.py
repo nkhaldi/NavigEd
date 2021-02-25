@@ -31,10 +31,10 @@ def start(message):
     greeting = f"<b>Привет {message.from_user.first_name}!</b>\n"
     msg_out = greeting + "Что хочешь изучить?"
     bot.send_message(
-            message.chat.id,
-            msg_out,
-            parse_mode='html',
-            reply_markup=subject_board
+        message.chat.id,
+        msg_out,
+        parse_mode='html',
+        reply_markup=subject_board
     )
 
 
@@ -61,17 +61,17 @@ def mess(message):
     else:
         msg_out = f"Я пока этого не знаю."
         bot.send_message(
-                message.chat.id,
-                msg_out,
-                parse_mode='html',
-                reply_markup=subject_board
+            message.chat.id,
+            msg_out,
+            parse_mode='html',
+            reply_markup=subject_board
         )
         return
 
     bot.send_message(
-            message.chat.id,
-            msg_out, parse_mode='html',
-            reply_markup=subject_board
+        message.chat.id,
+        msg_out, parse_mode='html',
+        reply_markup=subject_board
     )
 
 
