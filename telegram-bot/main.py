@@ -51,7 +51,6 @@ def mess(message):
         ms['m'] = ''
     else:
         ms['m'] = get_method(msg_in)
-#        get_subject(msg_in)
     print(ms['s'], ms['m'])
 
     if ms['s'] and ms['m']:
