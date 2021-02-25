@@ -20,6 +20,10 @@ subject_board.row('ИИ', 'Data Science')
 subject_board.row('Английский', 'Математка')
 subject_board.row('Программирование', 'Философия')
 
+method_board = telebot.types.ReplyKeyboardMarkup(True, True)
+method_board.row('Статьи', 'Книги')
+method_board.row('Онлайн-курсы', 'Видео-курсы')
+
 ms = {
         's': '',
         'm': ''
@@ -51,16 +55,27 @@ def mess(message):
         ms['m'] = ''
     else:
         ms['m'] = get_method(msg_in)
-    print(ms['s'], ms['m'])
 
     if ms['s'] and ms['m']:
         msg_out = navigate(ms['s'], ms['m'])
+        bot.send_message(
+            message.chat.id,
+            msg_out,
+            parse_mode='html',
+            reply_markup=subject_board
+        )
     elif ms['s']:
         msg_out = f"<b>Как ты хочешь изучать {msg_in}?</b>\n"
         msg_out += "- Статьи\n"
         msg_out += "- Книги\n"
-        msg_out += "- Интерактивные курсы\n"
+        msg_out += "- Онлайн-курсы\n"
         msg_out += "- Видео\n"
+        bot.send_message(
+            message.chat.id,
+            msg_out, parse_mode='html',
+            reply_markup=method_board
+        )
+        return
     else:
         msg_out = f"Я пока этого не знаю. {ms}"
         bot.send_message(
@@ -70,12 +85,6 @@ def mess(message):
             reply_markup=subject_board
         )
         return
-
-    bot.send_message(
-        message.chat.id,
-        msg_out, parse_mode='html',
-        reply_markup=subject_board
-    )
 
 
 bot.polling(none_stop=True)
