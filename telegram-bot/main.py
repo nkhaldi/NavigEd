@@ -29,6 +29,9 @@ ms = {
         'm': ''
 }
 
+thank = f"<b>Спасибо, что вы с нами!</b>\n"
+thank += "Если хотите поддержать нас, "
+thank += "можете оформить небольшое пожертвование:"
 
 @bot.message_handler(commands=['start'], content_types=['text'])
 def start(message):
@@ -48,6 +51,17 @@ def mess(message):
 
     if is_greeting(msg_in):
         return start(message)
+
+    if is_thanks(msg_in):
+        bot.send_message(
+            message.chat.id,
+            thank,
+            parse_mode='html',
+            reply_markup=subject_board
+        )
+        with open('../donate.png', 'rb') as donate:
+            bot.send_photo(message.chat.id, donate)
+        return
 
     temp = get_subject(msg_in)
     if temp:

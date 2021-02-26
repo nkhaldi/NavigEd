@@ -2,12 +2,18 @@
 
 
 def is_greeting(msg):
-    if msg == "hello" or    \
-            msg == "hi" or  \
-            msg == "привет":
-        return True
-    else:
-        return False
+    greetings = [
+        "hello", "hi", "привет", "здравствуйте",
+        "здравствуй", "здравствуй", "салам", "шалом"
+    ]
+    return msg in greetings
+
+
+def is_thanks(msg):
+    thanks = [
+        "thank you", "thanks", "ty", "спасибо", "спс"
+    ]
+    return msg in thanks
 
 
 def get_subject(msg):
