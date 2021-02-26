@@ -11,7 +11,7 @@ def is_greeting(msg):
 
 def is_thanks(msg):
     thanks = [
-        "thank you", "thanks", "ty", "спасибо", "спс"
+        "thank you", "thanks", "ty", "спасибо", "спс", "поддержать"
     ]
     return msg in thanks
 

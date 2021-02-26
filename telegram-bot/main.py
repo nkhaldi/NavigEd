@@ -19,10 +19,12 @@ subject_board = telebot.types.ReplyKeyboardMarkup(True, True)
 subject_board.row('ИИ', 'Data Science')
 subject_board.row('Английский', 'Математка')
 subject_board.row('Философия', 'Программирование')
+subject_board.row('Поддержать')
 
 method_board = telebot.types.ReplyKeyboardMarkup(True, True)
 method_board.row('Статьи', 'Книги')
 method_board.row('Онлайн-курсы', 'Видео-курсы')
+method_board.row('Поддержать')
 
 ms = {
         's': '',
@@ -32,6 +34,7 @@ ms = {
 thank = f"<b>Спасибо, что вы с нами!</b>\n"
 thank += "Если хотите поддержать нас, "
 thank += "можете оформить небольшое пожертвование:"
+
 
 @bot.message_handler(commands=['start'], content_types=['text'])
 def start(message):
