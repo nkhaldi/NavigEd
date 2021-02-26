@@ -12,7 +12,7 @@ def parse_article(row):
 
 def parse_book(row):
     name, author, year = row
-    res = f"{name} - {author} {[year]}\n"
+    res = f"{name} - {author} [{year}]\n"
     return res
 
 
