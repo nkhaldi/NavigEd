@@ -33,10 +33,10 @@ subjects = {
         ['eng', 'english', 'английский'],
         'math':
         ['math', 'матан', 'математика'],
-        'prog':
-        ['prog', 'coding', 'programming', 'программирование'],
         'philosofy':
-        ['philosofy', 'философия']
+        ['philosofy', 'философия'],
+        'prog':
+        ['prog', 'coding', 'programming', 'программирование']
 }
 
 methods = {
