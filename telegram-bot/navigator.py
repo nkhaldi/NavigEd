@@ -6,7 +6,7 @@ from csv import reader as csvReader
 
 def parse_article(row):
     name, url = row
-    res = f"{name} - {url}\n"
+    res = f"{name}: {url}\n"
     return res
 
 
@@ -17,14 +17,14 @@ def parse_book(row):
 
 
 def parse_course(row):
-    name, url = row
-    res = f"{name} - {url}\n"
+    name, platform, url = row
+    res = f"{name} - {platform}: {url}\n"
     return res
 
 
 def parse_video(row):
-    name, url = row
-    res = f"{name} - {url}\n"
+    name, author, url = row
+    res = f"{name} {author}: {url}\n"
     return res
 
 
