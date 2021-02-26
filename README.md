@@ -1,5 +1,5 @@
 # NavigEd
-Navigation for education
+Navigation for self-education
 
 ## Ru
 Проект, который поможет всем желающим изучать новые дисциплины,
