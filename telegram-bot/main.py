@@ -31,9 +31,9 @@ ms = {
         'm': ''
 }
 
-tmank_msg = f"<b>Спасибо, что вы с нами!</b>\n"
-tmank_msg += "Если хотите поддержать нас, "
-tmank_msg += "можете оформить небольшое пожертвование:"
+thank_msg = f"<b>Спасибо, что вы с нами!</b>\n"
+thank_msg += "Если хотите поддержать нас, "
+thank_msg += "можете оформить небольшое пожертвование:"
 
 
 @bot.message_handler(commands=['start'], content_types=['text'])
@@ -58,7 +58,7 @@ def mess(message):
     if is_thanks(msg_in):
         bot.send_message(
             message.chat.id,
-            tmank_msg,
+            thank_msg,
             parse_mode='html',
             reply_markup=subject_board
         )
