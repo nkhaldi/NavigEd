@@ -26,7 +26,8 @@ method_board.row('Статьи', 'Книги')
 method_board.row('Онлайн-курсы', 'Видео-курсы')
 method_board.row('Поддержать')
 
-ms = {
+# Subject-Method dict
+sm_dict = {
         's': '',
         'm': ''
 }
@@ -68,20 +69,20 @@ def mess(message):
 
     temp = get_subject(msg_in)
     if temp:
-        ms['s'] = temp
-        ms['m'] = ''
+        sm_dict['s'] = temp
+        sm_dict['m'] = ''
     else:
-        ms['m'] = get_method(msg_in)
+        sm_dict['m'] = get_method(msg_in)
 
-    if ms['s'] and ms['m']:
-        msg_out = navigate(ms['s'], ms['m'])
+    if sm_dict['s'] and sm_dict['m']:
+        msg_out = navigate(sm_dict['s'], sm_dict['m'])
         bot.send_message(
             message.chat.id,
             msg_out,
             parse_mode='html',
             reply_markup=subject_board
         )
-    elif ms['s']:
+    elif sm_dict['s']:
         msg_out = f"<b>Как ты хочешь изучать {msg_in}?</b>\n"
         msg_out += "- Статьи\n"
         msg_out += "- Книги\n"
