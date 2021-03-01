@@ -17,7 +17,7 @@ bot = telebot.TeleBot(token)
 
 subject_board = telebot.types.ReplyKeyboardMarkup(True, True)
 subject_board.row('ИИ', 'Data Science')
-subject_board.row('Английский', 'Математка')
+subject_board.row('Английский', 'Математика')
 subject_board.row('Философия', 'Программирование')
 subject_board.row('Поддержать')
 
