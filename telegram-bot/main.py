@@ -7,6 +7,7 @@
 
 import telebot
 
+from boards import *
 from navigator import *
 from message_handler import *
 
@@ -14,17 +15,6 @@ from message_handler import *
 token_file = open('/home/narek/.pass/.naviged.token')
 token = token_file.read().rstrip('\n')
 bot = telebot.TeleBot(token)
-
-subject_board = telebot.types.ReplyKeyboardMarkup(True, True)
-subject_board.row('ИИ', 'Data Science')
-subject_board.row('Английский', 'Математика')
-subject_board.row('Философия', 'Программирование')
-subject_board.row('Поддержать')
-
-method_board = telebot.types.ReplyKeyboardMarkup(True, True)
-method_board.row('Статьи', 'Книги')
-method_board.row('Онлайн-курсы', 'Видео-курсы')
-method_board.row('Поддержать')
 
 # Subject-Method dict
 sm_dict = {
@@ -63,7 +53,7 @@ def mess(message):
             parse_mode='html',
             reply_markup=subject_board
         )
-        with open('../../donate.png', 'rb') as donate:
+        with open('../img/donate.png', 'rb') as donate:
             bot.send_photo(message.chat.id, donate)
         return
 
