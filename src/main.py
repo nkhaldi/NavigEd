@@ -17,14 +17,14 @@ token = token_file.read().rstrip('\n')
 bot = telebot.TeleBot(token)
 
 # Subject-Method dict
-sm_dict = {
-        's': '',
-        'm': ''
-}
+sm_dict = {'s': '', 'm': ''}
 
 thank_msg = f"<b>Спасибо, что вы с нами!</b>\n"
 thank_msg += "Если хотите поддержать нас, "
 thank_msg += "можете оформить небольшое пожертвование:"
+
+subject_board = get_subject_board()
+method_board = get_method_board()
 
 
 @bot.message_handler(commands=['start'], content_types=['text'])
