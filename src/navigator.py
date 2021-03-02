@@ -37,18 +37,15 @@ class Navigator:
         res = f"{name}:\n{url}\n"
         return res
 
-
     def parse_book(self, row):
         name, author, year = row
         res = f"{name} - {author} [{year}]\n"
         return res
 
-
     def parse_course(self, row):
         name, platform, url = row
         res = f"{name} - {platform}:\n{url}\n"
         return res
-
 
     def parse_video(self, row):
         name, author, url = row
