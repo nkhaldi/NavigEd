@@ -48,3 +48,8 @@ def navigate(subject, method):
         reader = csvReader(fd)
         res = parse_file(reader, method)
     return res
+
+
+class Navigator:
+    def __init__(self):
+        pass
