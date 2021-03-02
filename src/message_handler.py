@@ -1,34 +1,14 @@
 #!/usr/bin/env python3
 
 
-def is_greeting(msg):
-    greetings = [
-        "hello", "hi", "привет", "здравствуйте",
-        "здравствуй", "здравствуй", "салам", "шалом"
-    ]
-    return msg in greetings
+greetings = [
+    "hello", "hi", "привет", "здравствуйте",
+    "здравствуй", "здравствуй", "салам", "шалом"
+]
 
-
-def is_thanks(msg):
-    thanks = [
-        "thank you", "thanks", "ty", "спасибо", "спс", "поддержать"
-    ]
-    return msg in thanks
-
-
-def get_subject(msg):
-    for subj in subjects:
-        if msg in subjects[subj]:
-            return subj
-    return False
-
-
-def get_method(msg):
-    for meth in methods:
-        if msg in methods[meth]:
-            return meth
-    return False
-
+thanks = [
+    "thank you", "thanks", "ty", "спасибо", "спс", "поддержать"
+]
 
 subjects = {
         'ai':
@@ -51,3 +31,30 @@ methods = {
         'c': ['c', 'courses', 'курсы', 'онлайн-курсы'],
         'v': ['v', 'videos', 'видео', 'видеокурсы']
 }
+
+
+class Message_handler:
+    def __init__(self):
+        self.input = ''
+        self.output = ''
+
+    def is_valid(self):
+        return self.is_subject() or self.is_method()
+
+    def get_subject(self):
+        for subj in subjects:
+            if self.input in subjects[subj]:
+                return subj
+        return False
+
+    def get_method(self):
+        for mthd in methods:
+            if self.input in methods[mthd]:
+                return mthd
+        return False
+
+    def is_greeting(self):
+        return self.input in greetings
+
+    def is_thanks(self):
+        return self.input in thanks

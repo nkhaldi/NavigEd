@@ -17,6 +17,7 @@ token = token_file.read().rstrip('\n')
 bot = telebot.TeleBot(token)
 
 nvg = Navigator()
+msg = Message_handler()
 
 thank_msg = f"<b>Спасибо, что вы с нами!</b>\n"
 thank_msg += "Если хотите поддержать нас, "
@@ -29,10 +30,10 @@ method_board = get_method_board()
 @bot.message_handler(commands=['start'], content_types=['text'])
 def start(message):
     greeting = f"<b>Привет {message.from_user.first_name}!</b>\n"
-    msg_out = greeting + "Что хочешь изучить?"
+    msg.output = greeting + "Что хочешь изучить?"
     bot.send_message(
         message.chat.id,
-        msg_out,
+        msg.output,
         parse_mode='html',
         reply_markup=subject_board
     )
@@ -40,12 +41,12 @@ def start(message):
 
 @bot.message_handler(content_types=['text'])
 def mess(message):
-    nvg.ms_in = message.text.strip().lower()
+    msg.input = message.text.strip().lower()
 
-    if is_greeting(nvg.ms_in):
+    if msg.is_greeting():
         return start(message)
 
-    if is_thanks(nvg.ms_in):
+    if msg.is_thanks():
         bot.send_message(
             message.chat.id,
             thank_msg,
@@ -56,35 +57,35 @@ def mess(message):
             bot.send_photo(message.chat.id, donate)
         return
 
-    temp = get_subject(nvg.ms_in)
+    temp = msg.get_subject()
     if temp:
         nvg.sm_dict['s'] = temp
         nvg.sm_dict['m'] = ''
     else:
-        nvg.sm_dict['m'] = get_method(nvg.ms_in)
+        nvg.sm_dict['m'] = msg.get_method()
 
     if nvg.sm_dict['s'] and nvg.sm_dict['m']:
-        msg_out = nvg.navigate()
+        msg.output = nvg.navigate()
         bot.send_message(
             message.chat.id,
-            msg_out,
+            msg.output,
             parse_mode='html',
             reply_markup=subject_board
         )
         nvg.sm_dict['m'] = 0
     elif nvg.sm_dict['s']:
-        msg_out = "Как ты хочешь это изучать?"
+        msg.output = "Как ты хочешь это изучать?"
         bot.send_message(
             message.chat.id,
-            msg_out, parse_mode='html',
+            msg.output, parse_mode='html',
             reply_markup=method_board
         )
         return
     else:
-        msg_out = f"Я пока этого не знаю."
+        msg.output = f"Я пока этого не знаю."
         bot.send_message(
             message.chat.id,
-            msg_out,
+            msg.output,
             parse_mode='html',
             reply_markup=subject_board
         )
