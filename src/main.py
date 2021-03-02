@@ -64,7 +64,7 @@ def mess(message):
         nvg.sm_dict['m'] = get_method(nvg.ms_in)
 
     if nvg.sm_dict['s'] and nvg.sm_dict['m']:
-        msg_out = navigate(nvg.sm_dict['s'], nvg.sm_dict['m'])
+        msg_out = nvg.navigate()
         bot.send_message(
             message.chat.id,
             msg_out,

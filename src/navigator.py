@@ -28,39 +28,32 @@ def parse_video(row):
     return res
 
 
-def parse_file(reader, method):
-    res = ""
-    for row in reader:
-        if method == 'a':
-            res += parse_article(row)
-        elif method == 'b':
-            res += parse_book(row)
-        elif method == 'c':
-            res += parse_course(row)
-        elif method == 'v':
-            res += parse_video(row)
-    return res
-
-
-def navigate(subject, method):
-    fname = f'../db/{subject}/{method}.csv'
-    with open(fname, 'r') as fd:
-        reader = csvReader(fd)
-        res = parse_file(reader, method)
-    return res
-
-
 class Navigator:
     def __init__(self):
         msg_in = ''
         msg_out = ''
         self.sm_dict = {'s': 0, 'm': 0}
 
+
+    def parse_file(self):
+        res = ""
+        for row in self.reader:
+            if self.sm_dict['m'] == 'a':
+                res += parse_article(row)
+            elif self.sm_dict['m'] == 'b':
+                res += parse_book(row)
+            elif self.sm_dict['m'] == 'c':
+                res += parse_course(row)
+            elif self.sm_dict['m'] == 'v':
+                res += parse_video(row)
+        return res
+
+
     def navigate(self):
         subj = self.sm_dict['s']
         mthd = self.sm_dict['m']
         fname = f'../db/{subj}/{mthd}.csv'
         with open(fname, 'r') as fd:
-            reader = csvReader(fd)
-            res = parse_file(reader, method)
+            self.reader = csvReader(fd)
+            res = self.parse_file()
         return res
