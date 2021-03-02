@@ -72,7 +72,7 @@ def mess(message):
             parse_mode='html',
             reply_markup=subject_board
         )
-        sm_dict = dict()
+        sm_dict['m'] = 0
     elif sm_dict['s']:
         msg_out = "Как ты хочешь это изучать?"
         bot.send_message(
