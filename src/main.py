@@ -17,7 +17,7 @@ token = token_file.read().rstrip('\n')
 bot = telebot.TeleBot(token)
 
 # Subject-Method dict
-sm_dict = {'s': '', 'm': ''}
+sm_dict = dict()
 
 thank_msg = f"<b>Спасибо, что вы с нами!</b>\n"
 thank_msg += "Если хотите поддержать нас, "
@@ -72,12 +72,9 @@ def mess(message):
             parse_mode='html',
             reply_markup=subject_board
         )
+        sm_dict = dict()
     elif sm_dict['s']:
-        msg_out = f"<b>Как ты хочешь изучать {msg_in}?</b>\n"
-        msg_out += "- Статьи\n"
-        msg_out += "- Книги\n"
-        msg_out += "- Онлайн-курсы\n"
-        msg_out += "- Видео\n"
+        msg_out = "Как ты хочешь это изучать?"
         bot.send_message(
             message.chat.id,
             msg_out, parse_mode='html',
