@@ -43,7 +43,7 @@ def parse_file(reader, method):
 
 
 def navigate(subject, method):
-    fname = '../db/' + str(subject) + '/' + str(method) + '.csv'
+    fname = f'../db/{subject}/{method}.csv'
     with open(fname, 'r') as fd:
         reader = csvReader(fd)
         res = parse_file(reader, method)
@@ -52,4 +52,15 @@ def navigate(subject, method):
 
 class Navigator:
     def __init__(self):
-        pass
+        msg_in = ''
+        msg_out = ''
+        self.sm_dict = {'s': 0, 'm': 0}
+
+    def navigate(self):
+        subj = self.sm_dict['s']
+        mthd = self.sm_dict['m']
+        fname = f'../db/{subj}/{mthd}.csv'
+        with open(fname, 'r') as fd:
+            reader = csvReader(fd)
+            res = parse_file(reader, method)
+        return res

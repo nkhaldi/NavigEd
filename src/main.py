@@ -16,8 +16,7 @@ token_file = open('/home/narek/.pass/.naviged.token')
 token = token_file.read().rstrip('\n')
 bot = telebot.TeleBot(token)
 
-# Subject-Method dict
-sm_dict = dict()
+nvg = Navigator()
 
 thank_msg = f"<b>Спасибо, что вы с нами!</b>\n"
 thank_msg += "Если хотите поддержать нас, "
@@ -41,12 +40,12 @@ def start(message):
 
 @bot.message_handler(content_types=['text'])
 def mess(message):
-    msg_in = message.text.strip().lower()
+    nvg.ms_in = message.text.strip().lower()
 
-    if is_greeting(msg_in):
+    if is_greeting(nvg.ms_in):
         return start(message)
 
-    if is_thanks(msg_in):
+    if is_thanks(nvg.ms_in):
         bot.send_message(
             message.chat.id,
             thank_msg,
@@ -57,23 +56,23 @@ def mess(message):
             bot.send_photo(message.chat.id, donate)
         return
 
-    temp = get_subject(msg_in)
+    temp = get_subject(nvg.ms_in)
     if temp:
-        sm_dict['s'] = temp
-        sm_dict['m'] = ''
+        nvg.sm_dict['s'] = temp
+        nvg.sm_dict['m'] = ''
     else:
-        sm_dict['m'] = get_method(msg_in)
+        nvg.sm_dict['m'] = get_method(nvg.ms_in)
 
-    if sm_dict['s'] and sm_dict['m']:
-        msg_out = navigate(sm_dict['s'], sm_dict['m'])
+    if nvg.sm_dict['s'] and nvg.sm_dict['m']:
+        msg_out = navigate(nvg.sm_dict['s'], nvg.sm_dict['m'])
         bot.send_message(
             message.chat.id,
             msg_out,
             parse_mode='html',
             reply_markup=subject_board
         )
-        sm_dict['m'] = 0
-    elif sm_dict['s']:
+        nvg.sm_dict['m'] = 0
+    elif nvg.sm_dict['s']:
         msg_out = "Как ты хочешь это изучать?"
         bot.send_message(
             message.chat.id,
