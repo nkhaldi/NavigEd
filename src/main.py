@@ -19,18 +19,13 @@ bot = telebot.TeleBot(token)
 nvg = Navigator()
 msg = Message_handler()
 
-thank_msg = f"<b>Спасибо, что вы с нами!</b>\n"
-thank_msg += "Если хотите поддержать нас, "
-thank_msg += "можете оформить небольшое пожертвование:"
-
 subject_board = get_subject_board()
 method_board = get_method_board()
 
 
 @bot.message_handler(commands=['start'], content_types=['text'])
 def start(message):
-    greeting = f"<b>Привет {message.from_user.first_name}!</b>\n"
-    msg.output = greeting + "Что хочешь изучить?"
+    msg.greet(message.from_user.first_name)
     bot.send_message(
         message.chat.id,
         msg.output,
@@ -47,9 +42,10 @@ def mess(message):
         return start(message)
 
     if msg.is_thanks():
+        msg.thank()
         bot.send_message(
             message.chat.id,
-            thank_msg,
+            msg.output,
             parse_mode='html',
             reply_markup=subject_board
         )
@@ -57,14 +53,15 @@ def mess(message):
             bot.send_photo(message.chat.id, donate)
         return
 
-    temp = msg.get_subject()
-    if temp:
-        nvg.sm_dict['s'] = temp
-        nvg.sm_dict['m'] = ''
+    if msg.get_subject():
+        nvg.subject = msg.get_subject()
+        nvg.method = 0
+    elif msg.get_method():
+        nvg.method = msg.get_method()
     else:
-        nvg.sm_dict['m'] = msg.get_method()
+        return
 
-    if nvg.sm_dict['s'] and nvg.sm_dict['m']:
+    if nvg.subject and nvg.method:
         msg.output = nvg.navigate()
         bot.send_message(
             message.chat.id,
@@ -72,8 +69,8 @@ def mess(message):
             parse_mode='html',
             reply_markup=subject_board
         )
-        nvg.sm_dict['m'] = 0
-    elif nvg.sm_dict['s']:
+        nvg.method = 0
+    elif nvg.subject:
         msg.output = "Как ты хочешь это изучать?"
         bot.send_message(
             message.chat.id,
@@ -82,13 +79,6 @@ def mess(message):
         )
         return
     else:
-        msg.output = f"Я пока этого не знаю."
-        bot.send_message(
-            message.chat.id,
-            msg.output,
-            parse_mode='html',
-            reply_markup=subject_board
-        )
         return
 
 

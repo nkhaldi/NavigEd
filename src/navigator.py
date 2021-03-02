@@ -6,13 +6,12 @@ from csv import reader as csvReader
 
 class Navigator:
     def __init__(self):
-        msg_in = ''
-        msg_out = ''
-        self.sm_dict = {'s': 0, 'm': 0}
+        self.subject = ''
+        self.method = ''
 
     def navigate(self):
-        subj = self.sm_dict['s']
-        mthd = self.sm_dict['m']
+        subj = self.subject
+        mthd = self.method
         fname = f'../db/{subj}/{mthd}.csv'
         with open(fname, 'r') as fd:
             self.reader = csvReader(fd)
@@ -22,13 +21,13 @@ class Navigator:
     def parse_file(self):
         res = ""
         for row in self.reader:
-            if self.sm_dict['m'] == 'a':
+            if self.method == 'a':
                 res += self.parse_article(row)
-            elif self.sm_dict['m'] == 'b':
+            elif self.method == 'b':
                 res += self.parse_book(row)
-            elif self.sm_dict['m'] == 'c':
+            elif self.method == 'c':
                 res += self.parse_course(row)
-            elif self.sm_dict['m'] == 'v':
+            elif self.method == 'v':
                 res += self.parse_video(row)
         return res
 

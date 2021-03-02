@@ -7,54 +7,56 @@ greetings = [
 ]
 
 thanks = [
-    "thank you", "thanks", "ty", "спасибо", "спс", "поддержать"
+    "thank you", "thanks", "ty", "спасибо", "пока", "поддержать"
 ]
 
+
 subjects = {
-        'ai':
-        ['ai', 'ии', 'искуственный интеллект'],
-        'ds':
-        ['ds', 'data science'],
-        'eng':
-        ['eng', 'english', 'английский'],
-        'math':
-        ['math', 'матан', 'математика'],
-        'philosofy':
-        ['philosofy', 'философия'],
-        'prog':
-        ['prog', 'coding', 'programming', 'программирование']
+        'data science': 'ds',
+        'английский': 'eng',
+        'искуственный интеллект': 'ai',
+        'математика': 'math',
+        'программирование': 'prog',
+        'философия': 'philosofy'
 }
 
 methods = {
-        'a': ['a', 'articles', 'статьи'],
-        'b': ['b', 'books', 'книги'],
-        'c': ['c', 'courses', 'курсы', 'онлайн-курсы'],
-        'v': ['v', 'videos', 'видео', 'видеокурсы']
+        'статьи': 'a',
+        'книги': 'b',
+        'курсы': 'c',
+        'онлайн-курсы': 'c',
+        'видео': 'v',
+        'видео-курсы': 'v'
 }
 
 
 class Message_handler:
     def __init__(self):
-        self.input = ''
-        self.output = ''
-
-    def is_valid(self):
-        return self.is_subject() or self.is_method()
+        self.input = 0
+        self.output = 0
 
     def get_subject(self):
-        for subj in subjects:
-            if self.input in subjects[subj]:
-                return subj
+        if self.input in subjects:
+            return subjects[self.input]
         return False
 
     def get_method(self):
-        for mthd in methods:
-            if self.input in methods[mthd]:
-                return mthd
+        if self.input in methods:
+            return methods[self.input]
         return False
 
     def is_greeting(self):
         return self.input in greetings
 
+    def greet(self, name):
+        self.output = f"<b>Привет {name}!</b>\n"
+        self.output += "Что хочешь изучить?"
+
+
     def is_thanks(self):
         return self.input in thanks
+
+    def thank(self):
+        self.output = f"<b>Спасибо, что вы с нами!</b>\n"
+        self.output += "Если хотите поддержать нас, "
+        self.output += "можете оформить небольшое пожертвование:"
