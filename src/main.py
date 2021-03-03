@@ -67,7 +67,7 @@ def mess(message):
             message.chat.id,
             msg.output,
             parse_mode='html',
-            reply_markup=subject_board
+            reply_markup=method_board
         )
         nvg.method = 0
     elif nvg.subject:
