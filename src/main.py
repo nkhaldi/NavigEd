@@ -53,6 +53,18 @@ def mess(message):
             bot.send_photo(message.chat.id, donate)
         return
 
+    if msg.input == 'назад':
+        nvg.subject = 0
+        nvg.method = 0
+        msg.output = 'Что ты хочешь изучить?'
+        bot.send_message(
+            message.chat.id,
+            msg.output,
+            parse_mode='html',
+            reply_markup=subject_board
+        )
+        return
+
     if msg.get_subject():
         nvg.subject = msg.get_subject()
         nvg.method = 0

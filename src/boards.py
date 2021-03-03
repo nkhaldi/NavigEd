@@ -19,5 +19,5 @@ def get_method_board():
     method_board = telebot.types.ReplyKeyboardMarkup(True, True)
     method_board.row('Статьи', 'Книги')
     method_board.row('Онлайн-курсы', 'Видео-курсы')
-    method_board.row('Поддержать')
+    method_board.row('Назад', 'Поддержать')
     return method_board
