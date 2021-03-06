@@ -83,7 +83,7 @@ def mess(message):
         )
         nvg.method = 0
     elif nvg.subject:
-        msg.output = "Как ты хочешь это изучать?"
+        msg.output = 'Как ты хочешь это изучать?'
         bot.send_message(
             message.chat.id,
             msg.output, parse_mode='html',

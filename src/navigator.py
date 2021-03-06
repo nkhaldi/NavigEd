@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-
 from csv import reader as csvReader
 
 
@@ -21,7 +20,7 @@ class Navigator:
         return res
 
     def parse_file(self):
-        res = ""
+        res = ''
         for row in self.reader:
             if self.method == 'a':
                 res += self.parse_article(row)
@@ -35,20 +34,20 @@ class Navigator:
 
     def parse_article(self, row):
         name, url = row
-        res = f"{name}:\n{url}\n"
+        res = f'{name}:\n{url}\n'
         return res
 
     def parse_book(self, row):
         name, author, year = row
-        res = f"{name} - {author} [{year}]\n"
+        res = f'{name} - {author} [{year}]\n'
         return res
 
     def parse_course(self, row):
         name, platform, url = row
-        res = f"{name} - {platform}:\n{url}\n"
+        res = f'{name} - {platform}:\n{url}\n'
         return res
 
     def parse_video(self, row):
         name, author, url = row
-        res = f"{name} {author}:\n{url}\n"
+        res = f'{name} {author}:\n{url}\n'
         return res
