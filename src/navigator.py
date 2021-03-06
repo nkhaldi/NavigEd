@@ -8,11 +8,13 @@ class Navigator:
     def __init__(self):
         self.subject = ''
         self.method = ''
+        self.code = '01'
 
     def navigate(self):
         subj = self.subject
         mthd = self.method
-        fname = f'../db/{subj}/{mthd}.csv'
+        code = self.code
+        fname = f'../db/{subj}/{code}-{mthd}.csv'
         with open(fname, 'r') as fd:
             self.reader = csvReader(fd)
             res = self.parse_file()
