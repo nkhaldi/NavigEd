@@ -13,7 +13,7 @@ class Navigator:
         subj = self.subject
         mthd = self.method
         code = self.code
-        fname = f'../db/{subj}/{code}-{mthd}.csv'
+        fname = f'db/{subj}/{code}-{mthd}.csv'
         with open(fname, 'r') as fd:
             self.reader = csvReader(fd)
             res = self.parse_file()

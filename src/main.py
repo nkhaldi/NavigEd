@@ -49,7 +49,7 @@ def mess(message):
             parse_mode='html',
             reply_markup=subject_board
         )
-        with open('../img/donate.png', 'rb') as donate:
+        with open('img/donate.png', 'rb') as donate:
             bot.send_photo(message.chat.id, donate)
         return
 
