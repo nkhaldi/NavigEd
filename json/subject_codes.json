@@ -26,5 +26,9 @@
         "spanish":  "04",
         "rissuan":  "05",
         "chinese":  "06"
+    },
+    "other": {
+        "philos":   "01",
+        "other":    "02"
     }
 }
