@@ -1,34 +1,34 @@
 {
     "math": {
-        "general":  "01",
-        "diskr":    "02",
-        "calc":     "03"
+        "general":  "m01",
+        "diskr":    "m02",
+        "calc":     "m03"
     },
     "prog": {
-        "ai":       "01",
-        "ds":       "02",
-        "c":        "03",
-        "c++":      "04",
-        "c#":       "05",
-        "python":   "06",
-        "java":     "07",
-        "js":       "08",
-        "perl":     "09",
-        "php":      "10",
-        "unix":     "11",
-        "android":  "12",
-        "iOS":      "13"
+        "ai":       "p01",
+        "ds":       "p02",
+        "c":        "p03",
+        "c++":      "p04",
+        "c#":       "p05",
+        "python":   "p06",
+        "java":     "p07",
+        "js":       "p08",
+        "perl":     "p09",
+        "php":      "p10",
+        "unix":     "p11",
+        "android":  "p12",
+        "iOS":      "p13"
     },
     "lang": {
-        "english":  "01",
-        "german":   "02",
-        "french":   "03",
-        "spanish":  "04",
-        "rissuan":  "05",
-        "chinese":  "06"
+        "english":  "l01",
+        "german":   "l02",
+        "french":   "l03",
+        "spanish":  "l04",
+        "rissuan":  "l05",
+        "chinese":  "l06"
     },
     "other": {
-        "philos":   "01",
-        "other":    "02"
+        "philos":   "o01",
+        "other":    "o02"
     }
 }

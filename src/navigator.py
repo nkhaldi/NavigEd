@@ -7,7 +7,7 @@ class Navigator:
     def __init__(self):
         self.subject = ''
         self.method = ''
-        self.code = '01'
+        self.code = 'm01'
 
     def navigate(self):
         subj = self.subject
