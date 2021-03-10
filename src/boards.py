@@ -7,9 +7,8 @@ import telebot
 # Subjects menu
 def get_subject_board():
     subject_board = telebot.types.ReplyKeyboardMarkup(True, True)
-    subject_board.row('Искуственный интеллект', 'Data Science')
-    subject_board.row('Английский', 'Математика')
-    subject_board.row('Философия', 'Программирование')
+    subject_board.row('Математика', 'Программирование')
+    subject_board.row('Языки', 'Прочее')
     subject_board.row('Поддержать')
     return subject_board
 

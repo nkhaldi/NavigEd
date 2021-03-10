@@ -7,12 +7,11 @@ class Navigator:
     def __init__(self):
         self.subject = ''
         self.method = ''
-        self.code = 'm01'
 
     def navigate(self):
         subj = self.subject
         mthd = self.method
-        code = self.code
+        code = self.subject[0] + '01'
         fname = f'db/{subj}/{code}-{mthd}.csv'
         with open(fname, 'r') as fd:
             self.reader = csvReader(fd)
