@@ -20,6 +20,11 @@ class Message_handler:
             return self.methods[self.input]
         return False
 
+    def get_code(self):
+        if self.input in self.codes:
+            return self.codes[self.subject][self.input]
+        return False
+
     def is_greeting(self):
         return self.input in self.greetings
 
@@ -28,12 +33,14 @@ class Message_handler:
         self.output += 'Что хочешь изучить?'
 
     def parse_json(self):
-        with open('json/messages.json') as fd:
-            msg_dict = json.load(fd)
+        with open('json/messages.json') as msg_fd:
+            msg_dict = json.load(msg_fd)
             self.greetings = msg_dict['greetings']
             self.thanks = msg_dict['thanks']
             self.subjects = msg_dict['subjects']
             self.methods = msg_dict['methods']
+        with open('json/subjects.json') as code_fd:
+            self.codes = json.load(code_fd)
 
     def is_thanks(self):
         return self.input in self.thanks
