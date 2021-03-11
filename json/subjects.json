@@ -5,19 +5,20 @@
         "calc":     "m03"
     },
     "prog": {
-        "ai":       "p01",
-        "ds":       "p02",
-        "c":        "p03",
-        "c++":      "p04",
-        "c#":       "p05",
-        "python":   "p06",
-        "java":     "p07",
-        "js":       "p08",
-        "perl":     "p09",
-        "php":      "p10",
-        "unix":     "p11",
-        "android":  "p12",
-        "iOS":      "p13"
+        "general":  "p01",
+        "c":        "p02",
+        "c++":      "p03",
+        "c#":       "p04",
+        "python":   "p05",
+        "java":     "p06",
+        "js":       "p07",
+        "perl":     "p08",
+        "php":      "p09",
+        "ai":       "p10",
+        "ds":       "p11",
+        "unix":     "p12",
+        "android":  "p13",
+        "ios":      "p14"
     },
     "lang": {
         "english":  "l01",
