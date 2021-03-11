@@ -20,3 +20,8 @@ def get_method_board():
     method_board.row('Онлайн-курсы', 'Видео')
     method_board.row('Назад', 'Поддержать')
     return method_board
+
+def get_code_board(codes):
+    code_board = telebot.types.ReplyKeyboardMarkup(True, True)
+    code_board.row('Основы', 'Поддержать')
+    return code_board
