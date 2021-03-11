@@ -8,7 +8,7 @@ class Message_handler:
     def __init__(self):
         self.input = 0
         self.output = 0
-        self.init_json()
+        self.parse_json()
 
     def get_subject(self):
         if self.input in self.subjects:
@@ -27,7 +27,7 @@ class Message_handler:
         self.output = f'<b>Привет {name}!</b>\n'
         self.output += 'Что хочешь изучить?'
 
-    def init_json(self):
+    def parse_json(self):
         with open('json/messages.json') as fd:
             msg_dict = json.load(fd)
             self.greetings = msg_dict['greetings']
