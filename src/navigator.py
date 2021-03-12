@@ -22,7 +22,7 @@ class Navigator:
         if msg.is_subject():
             self.subject = msg.get_subject()
 
-     def get_method(self, msg):
+    def get_method(self, msg):
         if msg.is_method():
             self.method = msg.get_method()
 

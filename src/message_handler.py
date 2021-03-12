@@ -21,10 +21,10 @@ class Message_handler:
         return False
 
     def is_subject(self):
-        return self.input in self.subjects:
+        return self.input in self.subjects
 
     def is_method(self):
-        return self.input in self.methods:
+        return self.input in self.methods
 
     def is_greeting(self):
         return self.input in self.greetings
