@@ -65,13 +65,8 @@ def mess(message):
         )
         return
 
-    if msg.get_subject():
-        nvg.subject = msg.get_subject()
-        nvg.method = 0
-    elif msg.get_method():
-        nvg.method = msg.get_method()
-    else:
-        return
+    nvg.get_subject()
+    nvg.get_method()
 
     if nvg.subject and nvg.method:
         msg.output = nvg.navigate()

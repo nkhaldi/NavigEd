@@ -11,19 +11,20 @@ class Message_handler:
         self.parse_json()
 
     def get_subject(self):
-        if self.input in self.subjects:
+        if self.is_subject():
             return self.subjects[self.input]
         return False
 
     def get_method(self):
-        if self.input in self.methods:
+        if self.is_method():
             return self.methods[self.input]
         return False
 
-    def get_code(self):
-        if self.input in self.codes:
-            return self.codes[self.subject][self.input]
-        return False
+    def is_subject(self):
+        return self.input in self.subjects:
+
+    def is_method(self):
+        return self.input in self.methods:
 
     def is_greeting(self):
         return self.input in self.greetings

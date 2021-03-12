@@ -18,6 +18,14 @@ class Navigator:
             res = self.parse_file()
         return res
 
+    def get_subject(self, msg):
+        if msg.is_subject():
+            self.subject = msg.get_subject()
+
+     def get_method(self, msg):
+        if msg.is_method():
+            self.method = msg.get_method()
+
     def parse_file(self):
         res = ''
         for row in self.reader:
