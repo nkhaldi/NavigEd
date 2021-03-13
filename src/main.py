@@ -7,20 +7,18 @@
 
 import telebot
 
-from boards import *
-from navigator import *
-from message_handler import *
+from board import Board
+from navigator import Navigator
+from message_handler import Message_handler
 
 
 token_file = open('/home/narek/.pass/.naviged.token')
 token = token_file.read().rstrip('\n')
 bot = telebot.TeleBot(token)
 
+brd = Board()
 nvg = Navigator()
 msg = Message_handler()
-
-subject_board = get_subject_board()
-method_board = get_method_board()
 
 
 @bot.message_handler(commands=['start'], content_types=['text'])
@@ -30,7 +28,7 @@ def start(message):
         message.chat.id,
         msg.output,
         parse_mode='html',
-        reply_markup=subject_board
+        reply_markup=brd.subjects
     )
 
 
@@ -47,7 +45,7 @@ def mess(message):
             message.chat.id,
             msg.output,
             parse_mode='html',
-            reply_markup=subject_board
+            reply_markup=brd.subjects
         )
         with open('img/donate.png', 'rb') as donate:
             bot.send_photo(message.chat.id, donate)
@@ -62,7 +60,7 @@ def mess(message):
             message.chat.id,
             msg.output,
             parse_mode='html',
-            reply_markup=subject_board
+            reply_markup=brd.subjects
         )
         return
 
@@ -76,7 +74,7 @@ def mess(message):
             message.chat.id,
             msg.output,
             parse_mode='html',
-            reply_markup=method_board
+            reply_markup=brd.methods
         )
         nvg.method = 0
     elif nvg.subject:
@@ -84,7 +82,7 @@ def mess(message):
         bot.send_message(
             message.chat.id,
             msg.output, parse_mode='html',
-            reply_markup=method_board
+            reply_markup=brd.methods
         )
         return
     else:
