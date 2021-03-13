@@ -5,13 +5,14 @@ from csv import reader as csvReader
 
 class Navigator:
     def __init__(self):
-        self.subject = ''
-        self.method = ''
+        self.subject = None
+        self.code = None
+        self.method = None
 
     def navigate(self):
         subj = self.subject
         mthd = self.method
-        code = self.subject[0] + '01'
+        code = self.code
         fname = f'db/{subj}/{code}-{mthd}.csv'
         with open(fname, 'r') as fd:
             self.reader = csvReader(fd)
@@ -21,6 +22,11 @@ class Navigator:
     def get_subject(self, msg):
         if msg.is_subject():
             self.subject = msg.get_subject()
+
+    # TODO
+    def get_code(self, msg):
+        if msg.input and self.subject:
+            self.code = self.subject[0] + '01'
 
     def get_method(self, msg):
         if msg.is_method():

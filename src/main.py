@@ -55,6 +55,7 @@ def mess(message):
 
     if msg.is_back():
         nvg.subject = 0
+        nvg.code = 0
         nvg.method = 0
         msg.output = 'Что ты хочешь изучить?'
         bot.send_message(
@@ -66,9 +67,10 @@ def mess(message):
         return
 
     nvg.get_subject(msg)
+    nvg.get_code(msg)
     nvg.get_method(msg)
 
-    if nvg.subject and nvg.method:
+    if nvg.subject and nvg.code and nvg.method:
         msg.output = nvg.navigate()
         bot.send_message(
             message.chat.id,
