@@ -5,7 +5,7 @@
 # t.me/NavigEdBot
 
 
-import telebot
+from telebot import TeleBot
 
 from board import Board
 from navigator import Navigator
@@ -14,7 +14,7 @@ from message_handler import Message_handler
 
 token_file = open('/home/narek/.pass/.naviged.token')
 token = token_file.read().rstrip('\n')
-bot = telebot.TeleBot(token)
+bot = TeleBot(token)
 
 brd = Board()
 nvg = Navigator()

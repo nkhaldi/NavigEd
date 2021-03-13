@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 
-import json
+from json import load as read_json
 
 
 class Message_handler:
@@ -38,13 +38,13 @@ class Message_handler:
 
     def parse_json(self):
         with open('json/messages.json') as msg_fd:
-            msg_dict = json.load(msg_fd)
+            msg_dict = read_json(msg_fd)
             self.greetings = msg_dict['greetings']
             self.thanks = msg_dict['thanks']
             self.subjects = msg_dict['subjects']
             self.methods = msg_dict['methods']
         with open('json/subjects.json') as code_fd:
-            self.codes = json.load(code_fd)
+            self.codes = read_json(code_fd)
 
     def is_thanks(self):
         return self.input in self.thanks
