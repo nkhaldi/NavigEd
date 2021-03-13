@@ -2,7 +2,7 @@
 
 # NavigEd telegram-bot
 # @NavigEdBot
-# http://t.me/NavigEdBot
+# t.me/NavigEdBot
 
 
 import telebot
