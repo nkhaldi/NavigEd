@@ -21,7 +21,7 @@ nvg = Navigator()
 msg = Message_handler()
 
 
-@bot.message_handler(commands=['start'], content_types=['text'])
+@bot.message_handler(commands=['start'])
 def start(message):
     msg.greet(message.from_user.first_name)
     bot.send_message(
@@ -32,6 +32,25 @@ def start(message):
     )
 
 
+# TODO
+@bot.message_handler(commands=['help'])
+def help(message):
+    start(message)
+
+
+@bot.message_handler(commands=['support'])
+def support(message):
+    msg.thank()
+    bot.send_message(
+        message.chat.id,
+        msg.output,
+        parse_mode='html',
+        reply_markup=brd.subjects
+    )
+    with open('img/donate.png', 'rb') as donate:
+        bot.send_photo(message.chat.id, donate)
+
+
 @bot.message_handler(content_types=['text'])
 def mess(message):
     msg.input = message.text.strip().lower()
@@ -40,16 +59,7 @@ def mess(message):
         return start(message)
 
     if msg.is_thanks():
-        msg.thank()
-        bot.send_message(
-            message.chat.id,
-            msg.output,
-            parse_mode='html',
-            reply_markup=brd.subjects
-        )
-        with open('img/donate.png', 'rb') as donate:
-            bot.send_photo(message.chat.id, donate)
-        return
+        return support(message)
 
     if msg.is_back():
         nvg.subject = 0
@@ -86,6 +96,12 @@ def mess(message):
         )
         return
     else:
+        msg.output = 'Что?'
+        bot.send_message(
+            message.chat.id,
+            msg.output, parse_mode='html',
+            reply_markup=brd.methods
+        )
         return
 
 
