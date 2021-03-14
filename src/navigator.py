@@ -19,18 +19,18 @@ class Navigator:
             res = self.parse_file()
         return res
 
-    def get_subject(self, msg):
+    def get_message(self, msg):
         if msg.is_subject():
+            self.nullify(s=True, c=True, m=True)
             self.subject = msg.get_subject()
-
-    # TODO
-    def get_code(self, msg):
-        if msg.input and self.subject:
+        # TODO: get_code
+            self.nullify(c=True, m=True)
             self.code = self.subject[0] + '01'
-
-    def get_method(self, msg):
-        if msg.is_method():
+        elif msg.is_method():
+            self.nullify(m=True)
             self.method = msg.get_method()
+        else:
+            self.nullify(s=True, c=True, m=True)
 
     def parse_file(self):
         res = ''
@@ -46,6 +46,14 @@ class Navigator:
             res += '\n\n'
         return res
 
+    def nullify(self, s=False, c=False, m=False, a=False):
+        if a or s:
+            self.subject = None
+        if a or c:
+            self.code = None
+        if a or m:
+            self.method = None
+        
     def parse_article(self, row):
         name, url = row
         res = f'{name}:\n{url}'

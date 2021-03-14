@@ -34,7 +34,7 @@ class Message_handler:
         self.output += 'Что хочешь изучить?'
 
     def is_back(self):
-        self.input == 'назад'
+        return self.input == 'назад'
 
     def parse_json(self):
         with open('json/messages.json') as msg_fd:

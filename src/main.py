@@ -30,6 +30,7 @@ def start(message):
         parse_mode='html',
         reply_markup=brd.subjects
     )
+    nvg.nullify(a=True)
 
 
 # TODO
@@ -49,6 +50,7 @@ def support(message):
     )
     with open('img/donate.png', 'rb') as donate:
         bot.send_photo(message.chat.id, donate)
+    nvg.nullify(a=True)
 
 
 @bot.message_handler(content_types=['text'])
@@ -62,9 +64,7 @@ def mess(message):
         return support(message)
 
     if msg.is_back():
-        nvg.subject = 0
-        nvg.code = 0
-        nvg.method = 0
+        nvg.nullify(a=True)
         msg.output = 'Что ты хочешь изучить?'
         bot.send_message(
             message.chat.id,
@@ -74,10 +74,7 @@ def mess(message):
         )
         return
 
-    nvg.get_subject(msg)
-    nvg.get_code(msg)
-    nvg.get_method(msg)
-
+    nvg.get_message(msg)
     if nvg.subject and nvg.code and nvg.method:
         msg.output = nvg.navigate()
         bot.send_message(
@@ -86,23 +83,29 @@ def mess(message):
             parse_mode='html',
             reply_markup=brd.methods
         )
-        nvg.method = 0
-    elif nvg.subject:
+        nvg.nullify(m=True)
+    elif nvg.subject and nvg.code:
         msg.output = 'Как ты хочешь это изучать?'
         bot.send_message(
             message.chat.id,
             msg.output, parse_mode='html',
             reply_markup=brd.methods
         )
-        return
+    elif nvg.subject:
+        msg.output = 'Какой раздел ты хочешь изучить?'
+        bot.send_message(
+            message.chat.id,
+            msg.output, parse_mode='html',
+            reply_markup=brd.codes
+        )
     else:
         msg.output = 'Что?'
         bot.send_message(
             message.chat.id,
             msg.output, parse_mode='html',
-            reply_markup=brd.methods
+            reply_markup=brd.subjects
         )
-        return
+        nvg.nullify(a=True)
 
 
 bot.polling(none_stop=True)
