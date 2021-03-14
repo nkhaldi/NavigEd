@@ -6,8 +6,8 @@ from json import load as read_json
 
 class Message_handler:
     def __init__(self):
-        self.input = 0
-        self.output = 0
+        self.input = None
+        self.output = None
         self.parse_json()
 
     def get_subject(self):
@@ -15,13 +15,21 @@ class Message_handler:
             return self.subjects[self.input]
         return False
 
+    def is_subject(self):
+        return self.input in self.subjects
+
+    def get_code(self, subject):
+        if self.is_code():
+            return self.codes[subject][self.input]
+        return False
+
+    def is_code(self, subject):
+        return self.input in self.codes[subj].values()
+
     def get_method(self):
         if self.is_method():
             return self.methods[self.input]
         return False
-
-    def is_subject(self):
-        return self.input in self.subjects
 
     def is_method(self):
         return self.input in self.methods

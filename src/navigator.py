@@ -23,9 +23,10 @@ class Navigator:
         if msg.is_subject():
             self.nullify(s=True, c=True, m=True)
             self.subject = msg.get_subject()
-        # TODO: get_code
+        elif msg.is_code(self.subject):
             self.nullify(c=True, m=True)
-            self.code = self.subject[0] + '01'
+            self.code = msg.get_code(self.subject)
+#            self.code = self.subject[0] + '01'
         elif msg.is_method():
             self.nullify(m=True)
             self.method = msg.get_method()
