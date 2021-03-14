@@ -93,6 +93,7 @@ def mess(message):
         )
     elif nvg.subject:
         msg.output = 'Какой раздел ты хочешь изучить?'
+        brd.build_code_board(msg.codes[nvg.subject])
         bot.send_message(
             message.chat.id,
             msg.output, parse_mode='html',

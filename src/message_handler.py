@@ -19,12 +19,14 @@ class Message_handler:
         return self.input in self.subjects
 
     def get_code(self, subject):
-        if self.is_code():
+        if self.is_code(subject):
+            print (self.codes[subject][self.input])
             return self.codes[subject][self.input]
         return False
 
     def is_code(self, subject):
-        return self.input in self.codes[subj].values()
+        print(self.input)
+        return self.input in self.codes[subject].values()
 
     def get_method(self):
         if self.is_method():
