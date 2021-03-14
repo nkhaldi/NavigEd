@@ -43,24 +43,25 @@ class Navigator:
                 res += self.parse_course(row)
             elif self.method == 'v':
                 res += self.parse_video(row)
+            res += '\n\n'
         return res
 
     def parse_article(self, row):
         name, url = row
-        res = f'{name}:\n{url}\n'
+        res = f'{name}:\n{url}'
         return res
 
     def parse_book(self, row):
         name, author, year = row
-        res = f'{name} - {author} [{year}]\n'
+        res = f'{name} - {author} [{year}]'
         return res
 
     def parse_course(self, row):
         name, platform, url = row
-        res = f'{name} - {platform}:\n{url}\n'
+        res = f'{name} - {platform}:\n{url}'
         return res
 
     def parse_video(self, row):
         name, author, url = row
-        res = f'{name} {author}:\n{url}\n'
+        res = f'{name} {author}:\n{url}'
         return res
