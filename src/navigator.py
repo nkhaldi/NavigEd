@@ -31,7 +31,8 @@ class Navigator:
             self.nullify(m=True)
             self.method = msg.get_method()
         else:
-            self.nullify(s=True, c=True, m=True)
+            pass
+#            self.nullify(a=True)
 
     def parse_file(self):
         res = ''

@@ -24,7 +24,7 @@ class Message_handler:
         return False
 
     def is_code(self, subject):
-        return self.input in self.codes[subject].values()
+        return self.input in self.codes[subject]
 
     def get_method(self):
         if self.is_method():
