@@ -19,7 +19,6 @@ class Board:
     def build_code_board(self, dcodes):
         self.codes = keyboard(True, True)
         lcodes = list(dcodes.keys())
-        print(lcodes)
         if len(lcodes) % 2:
             i = 0
             while i < len(lcodes)-1:
