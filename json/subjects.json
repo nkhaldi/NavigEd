@@ -12,13 +12,15 @@
         "python":   "p05",
         "java":     "p06",
         "js":       "p07",
-        "perl":     "p08",
-        "php":      "p09",
-        "ai":       "p10",
-        "ds":       "p11",
-        "unix":     "p12",
-        "android":  "p13",
-        "ios":      "p14"
+        "html":     "p08",
+        "sql":      "p09",
+        "perl":     "p10",
+        "php":      "p11",
+        "ai":       "p12",
+        "ds":       "p13",
+        "unix":     "p14",
+        "android":  "p15",
+        "ios":      "p16"
     },
     "lang": {
         "english":  "l01",
