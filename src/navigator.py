@@ -55,7 +55,7 @@ class Navigator:
             self.code = None
         if a or m:
             self.method = None
-        
+
     def parse_article(self, row):
         name, url = row
         res = f'{name}:\n{url}'

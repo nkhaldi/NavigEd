@@ -66,7 +66,6 @@ def mess(message):
     if msg.is_thanks():
         return support(message)
 
-
     if msg.is_back():
         nvg.nullify(a=True)
         msg.output = 'Что ты хочешь изучить?'
