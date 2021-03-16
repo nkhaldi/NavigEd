@@ -24,7 +24,7 @@ class Message_handler:
         return False
 
     def is_code(self, subject):
-        return self.input in self.codes[subject]
+        return subject and self.input in self.codes[subject]
 
     def get_method(self):
         if self.is_method():
@@ -44,15 +44,8 @@ class Message_handler:
     def is_back(self):
         return self.input == 'назад'
 
-    def parse_json(self):
-        with open('json/messages.json') as msg_fd:
-            msg_dict = read_json(msg_fd)
-            self.greetings = msg_dict['greetings']
-            self.thanks = msg_dict['thanks']
-            self.subjects = msg_dict['subjects']
-            self.methods = msg_dict['methods']
-        with open('json/subjects.json') as code_fd:
-            self.codes = read_json(code_fd)
+    def is_help(self):
+        return self.input == 'help'
 
     def is_thanks(self):
         return self.input in self.thanks
@@ -61,3 +54,13 @@ class Message_handler:
         self.output = f'<b>Спасибо, что вы с нами!</b>\n'
         self.output += 'Если хотите поддержать нас, '
         self.output += 'можете оформить небольшое пожертвование:'
+
+    def parse_json(self):
+        with open('json/messages.json') as msg_fd:
+            msg_dict = read_json(msg_fd)
+            self.greetings = msg_dict['greetings']
+            self.thanks = msg_dict['thanks']
+            self.subjects = msg_dict['subjects']
+            self.methods = msg_dict['methods']
+        with open('json/subjects.json') as code_fd:
+            self.codes = read_json(code_fd) 

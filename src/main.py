@@ -60,8 +60,12 @@ def mess(message):
     if msg.is_greeting():
         return start(message)
 
+    if msg.is_help():
+        return help(message)
+
     if msg.is_thanks():
         return support(message)
+
 
     if msg.is_back():
         nvg.nullify(a=True)
