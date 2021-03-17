@@ -8,6 +8,7 @@ class Message_handler:
     def __init__(self):
         self.input = None
         self.output = None
+        self.page_sign = None
         self.parse_json()
 
     def get_subject(self):
@@ -54,6 +55,12 @@ class Message_handler:
         self.output = f'<b>Спасибо, что вы с нами!</b>\n'
         self.output += 'Если хотите поддержать нас, '
         self.output += 'можете оформить небольшое пожертвование:'
+
+    def is_arrow(self):
+        if self.input == '<':
+            self.page_sign = -1
+        elif self.input == '>':
+            self.page_sign = 1
 
     def parse_json(self):
         with open('json/messages.json') as msg_fd:

@@ -77,7 +77,11 @@ def mess(message):
         )
         return
 
+    if msg.is_arrow():
+        brd.turn_page(msg.page_sign)
+
     nvg.get_message(msg)
+
     if nvg.subject and nvg.code and nvg.method:
         msg.output = nvg.navigate()
         bot.send_message(
@@ -91,7 +95,8 @@ def mess(message):
         msg.output = 'Как ты хочешь это изучать?'
         bot.send_message(
             message.chat.id,
-            msg.output, parse_mode='html',
+            msg.output,
+            parse_mode='html',
             reply_markup=brd.methods
         )
     elif nvg.subject:
@@ -99,14 +104,16 @@ def mess(message):
         brd.build_code_board(msg.codes[nvg.subject])
         bot.send_message(
             message.chat.id,
-            msg.output, parse_mode='html',
+            msg.output,
+            parse_mode='html',
             reply_markup=brd.codes
         )
     else:
         msg.output = 'Что?'
         bot.send_message(
             message.chat.id,
-            msg.output, parse_mode='html',
+            msg.output,
+            parse_mode='html',
             reply_markup=brd.subjects
         )
         nvg.nullify(a=True)
