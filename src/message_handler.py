@@ -70,5 +70,5 @@ class Message_handler:
             self.thanks = msg_dict['thanks']
             self.subjects = msg_dict['subjects']
             self.methods = msg_dict['methods']
-        with open('json/subjects.json') as code_fd:
-            self.codes = read_json(code_fd)
+            self.codes = msg_dict['codes']
+            print(self.codes)

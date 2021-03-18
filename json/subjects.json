@@ -1,37 +1,47 @@
 {
-    "math": {
-        "general":  "m01",
-        "diskr":    "m02",
-        "calc":     "m03"
-    },
-    "prog": {
-        "general":  "p01",
-        "c":        "p02",
-        "c++":      "p03",
-        "c#":       "p04",
-        "python":   "p05",
-        "java":     "p06",
-        "js":       "p07",
-        "html":     "p08",
-        "sql":      "p09",
-        "perl":     "p10",
-        "php":      "p11",
-        "ai":       "p12",
-        "ds":       "p13",
-        "unix":     "p14",
-        "android":  "p15",
-        "ios":      "p16"
-    },
-    "lang": {
-        "english":  "l01",
-        "german":   "l02",
-        "french":   "l03",
-        "spanish":  "l04",
-        "rissuan":  "l05",
-        "chinese":  "l06"
-    },
-    "other": {
-        "philos":   "o01",
-        "other":    "o02"
+    "subjects": [
+        "Математика",
+        "Программирование",
+        "Языки",
+        "Прочее"
+    ],
+    "codes": {
+        "math": [
+            "Основы",
+            "Математический анализ",
+            "Линейная алгебра",
+            "Тоерия вероятности/Статистика",
+            "Дискретная математика",
+            "ТФКП"
+        ],
+        "prog": [
+            "Основы",
+            "C/C++",
+            "C#",
+            "Python",
+            "Java",
+            "JS",
+            "HTML",
+            "SQL",
+            "Perl",
+            "PHP",
+            "Искуственный Интеллект",
+            "Data Science",
+            "Unix",
+            "Android-разработка",
+            "iOS"
+        ],
+        "lang": [
+            "english",
+            "german",
+            "french",
+            "spanish",
+            "rissuan",
+            "chinese"
+        ],
+        "other": [
+            "philos",
+            "other"
+        ]
     }
 }

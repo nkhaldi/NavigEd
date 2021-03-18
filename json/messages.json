@@ -18,5 +18,41 @@
         "курсы": "c",
         "онлайн-курсы": "c",
         "видео": "v"
+    },
+    "codes": {
+        "math": [
+            "general",
+            "diskr",
+            "calc"
+        ],
+        "prog": [
+            "general",
+            "c/c++",
+            "c#",
+            "python",
+            "java",
+            "js",
+            "html",
+            "sql",
+            "perl",
+            "php",
+            "ai",
+            "ds",
+            "unix",
+            "android",
+            "ios"
+        ],
+        "lang": [
+            "english",
+            "german",
+            "french",
+            "spanish",
+            "rissuan",
+            "chinese"
+        ],
+        "other": [
+            "philos",
+            "other"
+        ]
     }
 }
