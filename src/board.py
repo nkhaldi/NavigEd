@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 
+from json import load as read_json
 from telebot.types import ReplyKeyboardMarkup as keyboard
 
 
@@ -8,13 +9,29 @@ class Board:
     def __init__(self):
         self.page = 0
         self.page_sign = None
-        self.lcodes = None
 
+        self.lcodes = None
+        self.lsubj = None
+
+        self.build_subject_board()
+        self.build_method_board()
+
+    def build_subject_board(self):
         self.subjects = keyboard(True, True)
-        self.subjects.row('Математика', 'Программирование')
-        self.subjects.row('Языки', 'Прочее')
+
+        with open('json/messages.json') as msg_fd:
+            msg_dict = read_json(msg_fd)
+            self.lsubj = list(msg_dict['subjects'].keys())
+
+        i = 0
+        while i < len(self.lsubj)-1 and i < 6:
+            self.subjects.row(self.lsubj[i], self.lsubj[i+1])
+            i += 2
+        if len(self.lsubj) % 2:
+            self.subjects.row(self.lsubj[i])
         self.subjects.row('Поддержать')
 
+    def build_method_board(self):
         self.methods = keyboard(True, True)
         self.methods.row('Статьи', 'Книги')
         self.methods.row('Онлайн-курсы', 'Видео')
