@@ -26,13 +26,11 @@ class Navigator:
         elif msg.is_code(self.subject):
             self.nullify(c=True, m=True)
             self.code = msg.get_code(self.subject)
-#            self.code = self.subject[0] + '01'
         elif msg.is_method():
             self.nullify(m=True)
             self.method = msg.get_method()
         else:
             pass
-#            self.nullify(a=True)
 
     def parse_file(self):
         res = ''
@@ -51,8 +49,11 @@ class Navigator:
     def nullify(self, s=False, c=False, m=False, a=False):
         if a or s:
             self.subject = None
+            self.code = None
+            self.method = None
         if a or c:
             self.code = None
+            self.method = None
         if a or m:
             self.method = None
 

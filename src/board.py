@@ -7,8 +7,8 @@ from telebot.types import ReplyKeyboardMarkup as keyboard
 class Board:
     def __init__(self):
         self.page = 0
-        self.page_sign = 0
-        self.lcodes = list()
+        self.page_sign = None
+        self.lcodes = None
 
         self.subjects = keyboard(True, True)
         self.subjects.row('Математика', 'Программирование')
@@ -42,3 +42,8 @@ class Board:
             self.page -= 1
         else:
             pass
+
+    def nullify(self):
+        self.page = 0
+        self.page_sign = None
+        self.lcodes = None

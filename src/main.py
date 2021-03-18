@@ -31,6 +31,7 @@ def start(message):
         reply_markup=brd.subjects
     )
     nvg.nullify(a=True)
+    brd.nullify()
 
 
 # TODO
@@ -51,6 +52,7 @@ def support(message):
     with open('img/donate.png', 'rb') as donate:
         bot.send_photo(message.chat.id, donate)
     nvg.nullify(a=True)
+    brd.nullify()
 
 
 @bot.message_handler(content_types=['text'])
@@ -68,6 +70,7 @@ def mess(message):
 
     if msg.is_back():
         nvg.nullify(a=True)
+        brd.nullify()
         msg.output = 'Что ты хочешь изучить?'
         bot.send_message(
             message.chat.id,
@@ -91,6 +94,7 @@ def mess(message):
             reply_markup=brd.methods
         )
         nvg.nullify(m=True)
+        brd.nullify()
     elif nvg.subject and nvg.code:
         msg.output = 'Как ты хочешь это изучать?'
         bot.send_message(
@@ -117,6 +121,7 @@ def mess(message):
             reply_markup=brd.subjects
         )
         nvg.nullify(a=True)
+        brd.nullify()
 
 
 bot.polling(none_stop=True)
