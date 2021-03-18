@@ -61,6 +61,7 @@ class Message_handler:
             self.page_sign = -1
         elif self.input == '>':
             self.page_sign = 1
+        return self.input in '<>'
 
     def parse_json(self):
         with open('json/messages.json') as msg_fd:

@@ -6,7 +6,8 @@ from telebot.types import ReplyKeyboardMarkup as keyboard
 
 class Board:
     def __init__(self):
-        self.page = 1
+        self.page = 0
+        self.page_sign = 0
         self.lcodes = list()
 
         self.subjects = keyboard(True, True)
@@ -23,7 +24,7 @@ class Board:
         self.codes = keyboard(True, True)
         self.lcodes = list(dcodes.keys())
 
-        i = 0
+        i = self.page * 6
         while i < len(self.lcodes)-1 and i < 6:
             self.codes.row(self.lcodes[i], self.lcodes[i+1])
             i += 2
@@ -33,10 +34,11 @@ class Board:
         if len(self.lcodes) > 6:
             self.codes.row('<', '>')
 
-    def turn_page(self, page_sign):
-        if page_sign == 1:
+    def turn_page(self, psign):
+        print 
+        if psign == 1:
             self.page += 1
-        elif page_sign == -1:
+        elif psign == -1:
             self.page -= 1
         else:
             pass
