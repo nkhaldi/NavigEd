@@ -21,7 +21,8 @@ class Message_handler:
 
     def get_code(self, subject):
         if self.is_code(subject):
-            return self.codes[subject][self.input]
+            print (self.codes[subject])
+            return self.codes[subject]
         return False
 
     def is_code(self, subject):
@@ -71,4 +72,3 @@ class Message_handler:
             self.subjects = msg_dict['subjects']
             self.methods = msg_dict['methods']
             self.codes = msg_dict['codes']
-            print(self.codes)

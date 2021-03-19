@@ -37,9 +37,9 @@ class Board:
         self.methods.row('Онлайн-курсы', 'Видео')
         self.methods.row('Назад', 'Поддержать')
 
-    def build_code_board(self, dcodes):
+    def build_code_board(self, code_lst):
         self.codes = keyboard(True, True)
-        self.lcodes = list(dcodes.keys())
+        self.lcodes = code_lst
 
         i = self.page * 6
         while i < len(self.lcodes)-1 and i < 6:
@@ -52,7 +52,6 @@ class Board:
             self.codes.row('<', '>')
 
     def turn_page(self, psign):
-        print 
         if psign == 1:
             self.page += 1
         elif psign == -1:
