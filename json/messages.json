@@ -22,13 +22,16 @@
     "codes": {
         "math": [
             "general",
+            "calculus",
+            "linal",
+            "stat",
             "diskr",
-            "calc"
+            "tfkp"
         ],
         "prog": [
             "general",
             "cc++",
-            "c#",
+            "csharp",
             "python",
             "java",
             "js",
