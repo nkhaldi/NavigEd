@@ -21,13 +21,13 @@ class Navigator:
 
     def get_message(self, msg):
         if msg.is_subject():
-            self.nullify(s=True, c=True, m=True)
+            self.nullify(subj=True, code=True, mthd=True)
             self.subject = msg.get_subject()
         elif msg.is_code(self.subject):
-            self.nullify(c=True, m=True)
+            self.nullify(code=True, mthd=True)
             self.code = msg.get_code(self.subject)
         elif msg.is_method():
-            self.nullify(m=True)
+            self.nullify(mthd=True)
             self.method = msg.get_method()
         else:
             pass
@@ -46,15 +46,12 @@ class Navigator:
             res += '\n\n'
         return res
 
-    def nullify(self, s=False, c=False, m=False, a=False):
-        if a or s:
+    def nullify(self, subj=False, code=False, mthd=False):
+        if subj or not code and not mthd:
             self.subject = None
+        if code or not subj and not mthd:
             self.code = None
-            self.method = None
-        if a or c:
-            self.code = None
-            self.method = None
-        if a or m:
+        if mthd or not subj and not mthd:
             self.method = None
 
     def parse_article(self, row):

@@ -23,6 +23,7 @@ msg = Message_handler()
 
 @bot.message_handler(commands=['start'])
 def start(message):
+    nvg.nullify()
     msg.greet(message.from_user.first_name)
     bot.send_message(
         message.chat.id,
@@ -30,8 +31,6 @@ def start(message):
         parse_mode='html',
         reply_markup=brd.subjects
     )
-    nvg.nullify(a=True)
-    brd.nullify()
 
 
 # TODO
@@ -51,8 +50,7 @@ def support(message):
     )
     with open('img/donate.png', 'rb') as donate:
         bot.send_photo(message.chat.id, donate)
-    nvg.nullify(a=True)
-    brd.nullify()
+    nvg.nullify()
 
 
 @bot.message_handler(content_types=['text'])
@@ -69,8 +67,8 @@ def mess(message):
         return support(message)
 
     if msg.is_back():
-        nvg.nullify(a=True)
-        brd.nullify()
+        start(message)
+        nvg.nullify()
         msg.output = 'Что ты хочешь изучить?'
         bot.send_message(
             message.chat.id,
@@ -80,11 +78,7 @@ def mess(message):
         )
         return
 
-    if msg.is_arrow():
-        brd.turn_page(msg.page_sign)
-
     nvg.get_message(msg)
-
     if nvg.subject and nvg.code and nvg.method:
         msg.output = nvg.navigate()
         bot.send_message(
@@ -93,8 +87,7 @@ def mess(message):
             parse_mode='html',
             reply_markup=brd.methods
         )
-        nvg.nullify(m=True)
-        brd.nullify()
+        nvg.nullify(mthd=True)
     elif nvg.subject and nvg.code:
         msg.output = 'Как ты хочешь это изучать?'
         bot.send_message(
@@ -105,7 +98,7 @@ def mess(message):
         )
     elif nvg.subject:
         msg.output = 'Какой раздел ты хочешь изучить?'
-        brd.build_code_board(msg.codes[nvg.subject])
+        brd.build_code_board(nvg.subject)
         bot.send_message(
             message.chat.id,
             msg.output,
@@ -120,8 +113,7 @@ def mess(message):
             parse_mode='html',
             reply_markup=brd.subjects
         )
-        nvg.nullify(a=True)
-        brd.nullify()
+        nvg.nullify()
 
 
 bot.polling(none_stop=True)

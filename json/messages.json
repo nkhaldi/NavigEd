@@ -20,42 +20,42 @@
         "видео": "v"
     },
     "codes": {
-        "math": [
-            "general",
-            "calculus",
-            "linal",
-            "stat",
-            "diskr",
-            "tfkp"
-        ],
-        "prog": [
-            "general",
-            "cc++",
-            "csharp",
-            "python",
-            "java",
-            "js",
-            "html",
-            "sql",
-            "perl",
-            "php",
-            "ai",
-            "ds",
-            "unix",
-            "android",
-            "ios"
-        ],
-        "lang": [
-            "english",
-            "german",
-            "french",
-            "spanish",
-            "rissuan",
-            "chinese"
-        ],
-        "other": [
-            "philos",
-            "other"
-        ]
+        "math": {
+            "основы": "general",
+            "математический анализ": "calculus",
+            "линейная алгебра": "linal",
+            "тоерия вероятности/статистика": "stat",
+            "дискретная математика": "diskr",
+            "тфкп": "tfkp"
+        },
+        "prog": {
+            "основы": "general",
+            "c/c++": "cc++",
+            "c#": "csharp",
+            "python": "python",
+            "java": "java",
+            "js": "js",
+            "html": "html",
+            "sql": "sql",
+            "perl": "perl",
+            "php": "php",
+            "искуственный интеллект": "ai",
+            "data science": "ds",
+            "unix": "unix",
+            "android-разработка": "android",
+            "ios": "ios"
+        },
+        "lang": {
+            "английский": "english",
+            "немецкий": "german",
+            "французский": "french",
+            "испанский": "spanish",
+            "русский": "rissuan",
+            "китайский": "chinese"
+        },
+        "other": {
+            "философия": "philos",
+            "прочее": "other"
+        }
     }
 }

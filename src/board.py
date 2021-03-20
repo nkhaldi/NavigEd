@@ -7,28 +7,22 @@ from telebot.types import ReplyKeyboardMarkup as keyboard
 
 class Board:
     def __init__(self):
-        self.page = 0
-        self.page_sign = None
-
-        self.lcodes = None
-        self.lsubj = None
-
+        self.brd_dict = None
         self.build_subject_board()
         self.build_method_board()
 
     def build_subject_board(self):
+        with open('json/subjects.json') as msg_fd:
+            self.brd_dict = read_json(msg_fd)
+            subj_list = self.brd_dict['subjects']
+
         self.subjects = keyboard(True, True)
-
-        with open('json/messages.json') as msg_fd:
-            msg_dict = read_json(msg_fd)
-            self.lsubj = list(msg_dict['subjects'].keys())
-
         i = 0
-        while i < len(self.lsubj)-1 and i < 6:
-            self.subjects.row(self.lsubj[i], self.lsubj[i+1])
+        while i < len(subj_list)-1 and i < 6:
+            self.subjects.row(subj_list[i], subj_list[i+1])
             i += 2
-        if len(self.lsubj) % 2:
-            self.subjects.row(self.lsubj[i])
+        if len(subj_list) % 2:
+            self.subjects.row(subj_list[i])
         self.subjects.row('Поддержать')
 
     def build_method_board(self):
@@ -37,29 +31,13 @@ class Board:
         self.methods.row('Онлайн-курсы', 'Видео')
         self.methods.row('Назад', 'Поддержать')
 
-    def build_code_board(self, code_lst):
+    def build_code_board(self, subject):
+        code_list = self.brd_dict[subject]
+
         self.codes = keyboard(True, True)
-        self.lcodes = code_lst
-
-        i = self.page * 6
-        while i < len(self.lcodes)-1 and i < 6:
-            self.codes.row(self.lcodes[i], self.lcodes[i+1])
+        i = 0
+        while i < len(code_list)-1:
+            self.codes.row(code_list[i], code_list[i+1])
             i += 2
-        if len(self.lcodes) % 2:
-            self.codes.row(self.lcodes[i])
-
-        if len(self.lcodes) > 6:
-            self.codes.row('<', '>')
-
-    def turn_page(self, psign):
-        if psign == 1:
-            self.page += 1
-        elif psign == -1:
-            self.page -= 1
-        else:
-            pass
-
-    def nullify(self):
-        self.page = 0
-        self.page_sign = None
-        self.lcodes = None
+        if len(code_list) % 2:
+            self.codes.row(code_list[i])
