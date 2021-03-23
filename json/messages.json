@@ -54,8 +54,8 @@
             "китайский": "chinese"
         },
         "other": {
-            "философия": "philos",
-            "прочее": "other"
+            "философия": "philosophy",
+            "экономика": "economics"
         }
     }
 }
