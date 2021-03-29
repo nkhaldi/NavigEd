@@ -48,8 +48,8 @@ def support(message):
         parse_mode='html',
         reply_markup=brd.subjects
     )
-    with open('img/donate.png', 'rb') as donate:
-        bot.send_photo(message.chat.id, donate)
+    with open(msg.donate, 'rb') as dfd:
+        bot.send_photo(message.chat.id, dfd)
     nvg.nullify()
 
 

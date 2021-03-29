@@ -8,6 +8,7 @@ class Message_handler:
     def __init__(self):
         self.input = None
         self.output = None
+        self.donate = 'img/donate.jpg'
         self.parse_json()
 
     def get_subject(self):
