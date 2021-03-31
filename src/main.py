@@ -86,7 +86,7 @@ def mess(message):
 
     if nvg.add and nvg.subject and nvg.code and nvg.method:
         with open('db/to_add.csv', 'a') as afd:
-            afd.write(f'{nvg.subject},{nvg.code},{nvg.method}')
+            afd.write(f'{nvg.subject},{nvg.code},{nvg.method}\n')
 
         msg.output = f'{nvg.subject} - {nvg.code} - {nvg.method} added'
         bot.send_message(
