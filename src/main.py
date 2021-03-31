@@ -53,6 +53,17 @@ def support(message):
     nvg.nullify()
 
 
+@bot.message_handler(commands=['add'])
+def add(message):
+    msg.output = 'add new'
+    bot.send_message(
+        message.chat.id,
+        msg.output,
+        parse_mode='html',
+        reply_markup=brd.subjects
+    )
+
+
 @bot.message_handler(content_types=['text'])
 def mess(message):
     msg.input = message.text.strip().lower()
