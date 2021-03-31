@@ -8,6 +8,7 @@ class Navigator:
         self.subject = None
         self.code = None
         self.method = None
+        self.add = False
 
     def navigate(self):
         subj = self.subject

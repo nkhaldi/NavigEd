@@ -55,7 +55,8 @@ def support(message):
 
 @bot.message_handler(commands=['add'])
 def add(message):
-    msg.output = 'add new'
+    nvg.add = True
+    msg.output = 'Что ты хочешь добавить?'
     bot.send_message(
         message.chat.id,
         msg.output,
@@ -78,18 +79,25 @@ def mess(message):
         return support(message)
 
     if msg.is_back():
-        start(message)
         nvg.nullify()
-        msg.output = 'Что ты хочешь изучить?'
+        return start(message)
+
+    nvg.get_message(msg)
+
+    if nvg.add and nvg.subject and nvg.code and nvg.method:
+        with open('db/to_add.csv', 'a') as afd:
+            afd.write(f'{nvg.subject},{nvg.code},{nvg.method}')
+
+        msg.output = f'{nvg.subject} - {nvg.code} - {nvg.method} added'
         bot.send_message(
             message.chat.id,
             msg.output,
             parse_mode='html',
-            reply_markup=brd.subjects
+            reply_markup=brd.methods
         )
+        nvg.add = False
         return
 
-    nvg.get_message(msg)
     if nvg.subject and nvg.code and nvg.method:
         msg.output = nvg.navigate()
         bot.send_message(
