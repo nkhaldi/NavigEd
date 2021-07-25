@@ -12,7 +12,7 @@ from navigator import Navigator
 from message_handler import Message_handler
 
 
-token_file = open('/home/narek/.pass/.naviged.token')
+token_file = open('/Users/narek/.pass/.naviged.token')
 token = token_file.read().rstrip('\n')
 bot = TeleBot(token)
 
