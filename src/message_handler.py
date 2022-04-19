@@ -54,7 +54,7 @@ class Message_handler:
     def thank(self):
         self.output = f'<b>Спасибо, что вы с нами!</b>\n'
         self.output += 'Если хотите поддержать нас, '
-        self.output += 'можете оформить небольшое пожертвование:'
+        self.output += 'можете оформить небольшое пожертвование в BTC:'
 
     def parse_json(self):
         with open('json/messages.json') as msg_fd:
